@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main-menu">
+        <div class="cute-gif-window">
+            <img class="menu-photo" src="./assets/Illustration112.png" alt="">
+        </div>
+        <a id="enter-button" href="./menu.html">Enter</a>
+    </div>
+
+    <script>
+        const images = [
+            './assets/Illustration112.png',
+            './assets/Illustration11.png'
+        ]
+        const menuPhoto = document.querySelector(".menu-photo");
+
+        let isFirstImage = true
+        setInterval(()=>{
+            if(isFirstImage){
+                menuPhoto.src = images[0]
+            }else{
+                menuPhoto.src = images[1]
+            }
+            isFirstImage = !isFirstImage
+        },500)
+    </script>
+</body>
+</html>

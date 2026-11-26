@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane</title>
+    <link rel="stylesheet" href="./menu.css">
+    
+</head>
+<body>
+
+    <!-- home screen -->
+    <div class="menu-window" id="home">
+        <img class="watermark" src="./assets/logo.png" alt="Memory Lane">
+
+        <button id="createBtn">Create a Room</button>
+        <button id="joinBtn">Join a Room</button>
+        <input id="codeInput" maxlength="4" placeholder="Enter room code">
+        <p id="error"></p>
+    </div>
+
+    <!-- lobby room (no cam access here) -->
+    <div id="lobby" hidden>
+
+        <button id="backBtn">← Back</button>
+
+        <h2>Room: <span id="roomCode"></span></h2>
+        <p><span id="count">0</span> / 4 joined</p>
+
+        <!-- the little guys -->
+        <div id="participants" class="participants"></div>
+
+        <div class="theme-buttons">
+            <button id="hangingBtn">Hanging photos</button>
+            <button id="stripBtn">Photo strip</button>
+        </div>
+
+        <p>Theme: <span id="themeName">Hanging Photo</span></p>
+
+        <!-- cam stays hidden here till the next room -->
+        <div id="videos" hidden>
+            <video id="cam" autoplay playsinline muted></video>
+        </div>
+
+        <button id="startBtn" disabled>Start</button>
+
+    </div>
+
+    <!-- posing + countdown room -->
+    <div id="studio" hidden>
+
+        <h1 id="studioCountdown"></h1>
+        <p id="camError"></p>
+        <div id="studioPhotos" class="hanging-mode">
+        </div>
+
+    </div>
+
+    <!-- results -->
+    <div id="result" hidden>
+        <img class="watermark-two" src="./assets/logo.png">
+        <canvas id="finalCanvas"></canvas>
+
+        <div class="result-buttons">
+            <button id="downloadBtn">Download</button>
+            <button id="retakeBtn">Retake</button>
+        </div>
+
+    </div>
+
+    <p id="error"></p>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="menu.js"></script>
+
+</body>
+</html>

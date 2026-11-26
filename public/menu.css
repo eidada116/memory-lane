@@ -1,0 +1,287 @@
+@font-face {
+    font-family: "EriAn";
+    src: url("./assets/EriAn.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: "EriAn", sans-serif;
+}
+/* center everything on screen */
+body {
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffcea;
+
+}
+
+/* stack menu stuff vertically */
+.menu-window {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.watermark {
+    width: 60vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.watermark-two{
+    width:40vh;
+    height:auto;
+    object-fit: contain;
+}
+
+button{
+    border: 3px solid #92694d;
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    text-decoration: none;
+    color: #e9aabb;
+    font-family: 'EriAn';
+    font-size: 25px;
+    background-color: #fffcea;
+}
+
+button:hover {
+    transform: rotate(-5deg);
+    color: #41a080;
+    background-color: #f3ece1;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body.lobby-active {
+    justify-content: flex-start;
+}
+
+/* push lobby to the left */
+#lobby {
+    margin-left: 8%;
+    text-align: left;
+    color:#92694d
+}
+
+
+/* actually hide hidden stuff */
+[hidden] {
+    display: none !important;
+}
+
+/* general */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #fffced;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* lobby */
+body.lobby-active {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#lobby {
+    margin-left: 8%;
+    margin-top: 40px;
+    text-align: left;
+}
+
+/* participants */
+.participants {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+
+    margin: 30px 0;
+    min-height: 140px;
+}
+
+.participant-photo {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* results */
+body.result-active {
+    justify-content: center;
+    align-items: center;
+}
+
+#result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+#result canvas {
+    width: min(480px, 80vw);
+    max-height: 70vh;
+    height: auto;
+    object-fit: contain;
+}
+
+/* shrink long strip a bit */
+body.strip-result #result canvas {
+    width: min(270px, 65vw);
+    max-height: 75vh;
+}
+
+/* result buttons */
+.result-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* live strip & hanging wall in studio */
+        #studio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 20px;
+        }
+
+        #studio[hidden] {
+            display: none;
+        }
+
+        #studioCountdown {
+            font-size: 3rem;
+            margin: 0;
+            min-height: 3.5rem;
+        }
+
+        #homeError,
+        #studioError {
+            text-align: center;
+            margin: 8px auto 0;
+            max-width: 360px;
+        }
+
+        /* strip layout */
+        #studioPhotos.strip-mode {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: #fff7ee;
+            padding: 18px 12px;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            width: 300px;
+        }
+
+        #studioPhotos.strip-mode .studio-slot {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #ffffff;
+            padding: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* hanging wall layout */
+        #studioPhotos.hanging-mode {
+            display: grid;
+            grid-template-columns: repeat(2, 260px);
+            gap: 28px;
+            background: #fffced;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        #studioPhotos.hanging-mode .studio-slot {
+            position: relative;
+            width: 260px;
+            aspect-ratio: 4 / 3;
+            background: #ffffff;
+            padding: 10px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* cute lil pink pins */
+        #studioPhotos.hanging-mode .studio-slot::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f4a6b0;
+            z-index: 3;
+        }
+
+        /* live cam inside each slot */
+        .studio-slot video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scaleX(-1); /* flip so posing feels normal */
+            background: #f3ece1;
+        }
+
+        .slot-waiting {
+            font-size: 0.85rem;
+            color: #9c8f80;
+            text-align: center;
+        }
+
+        #finalCanvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.menu-window #error {
+    text-align: center;
+    margin-top: 10px;
+}
