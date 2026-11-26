@@ -571,3 +571,4 @@ function renderParticipants(count) {
         img.style.border= "3px solid #92694d";
     }
 }
+
